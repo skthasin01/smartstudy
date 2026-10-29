@@ -1,0 +1,26 @@
+# ===================================================================
+# Smart Study Load & Burnout Prevention System - Configuration Example
+# Copy this file to application.properties or set environment variables
+# ===================================================================
+
+server.port=8080
+
+# PostgreSQL Database Configuration
+spring.datasource.url=jdbc:postgresql://localhost:5432/smart_study_db
+spring.datasource.username=postgres
+spring.datasource.password=your_postgres_password_here
+spring.datasource.driver-class-name=org.postgresql.Driver
+
+spring.jpa.database-platform=org.hibernate.dialect.PostgreSQL10Dialect
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=false
+spring.jpa.properties.hibernate.format_sql=true
+
+# JWT Configuration (Minimum 256-bit hexadecimal string)
+app.jwt.secret=404E635266556A586E3272357538782F413F4428472B4B6250645367566B5970
+app.jwt.expiration-ms=86400000
+
+# Swagger / OpenAPI
+spring.mvc.pathmatch.matching-strategy=ant_path_matcher
+springdoc.swagger-ui.path=/swagger-ui.html
+springdoc.api-docs.path=/v3/api-docs

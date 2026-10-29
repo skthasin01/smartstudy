@@ -1,0 +1,266 @@
+:root {
+  --primary-color: #4f46e5;
+  --primary-hover: #4338ca;
+  --primary-light: #eef2ff;
+  --secondary-color: #06b6d4;
+  --bg-main: #f8fafc;
+  --bg-card: #ffffff;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-color: #e2e8f0;
+  --danger-color: #ef4444;
+  --warning-color: #f59e0b;
+  --success-color: #10b981;
+  --sidebar-width: 260px;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background-color: var(--bg-main);
+  color: var(--text-main);
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Layout */
+.app-container {
+  display: flex;
+  min-height: 100vh;
+}
+
+.sidebar {
+  width: var(--sidebar-width);
+  background: #0f172a;
+  color: #f8fafc;
+  flex-shrink: 0;
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1000;
+  box-shadow: 4px 0 10px rgba(0, 0, 0, 0.05);
+}
+
+.main-content {
+  margin-left: var(--sidebar-width);
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--bg-main);
+}
+
+.top-navbar {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky;
+  top: 0;
+  z-index: 900;
+  padding: 0.75rem 2rem;
+}
+
+.content-body {
+  padding: 2rem;
+  flex-grow: 1;
+}
+
+/* Sidebar Nav */
+.sidebar-brand {
+  padding: 1.5rem 1.25rem;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.sidebar-nav {
+  list-style: none;
+  padding: 1rem 0.75rem;
+  margin: 0;
+  flex-grow: 1;
+  overflow-y: auto;
+}
+
+.sidebar-nav .nav-item {
+  margin-bottom: 0.25rem;
+}
+
+.sidebar-nav .nav-link {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+  padding: 0.75rem 1rem;
+  color: #94a3b8;
+  border-radius: 0.5rem;
+  text-decoration: none;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.sidebar-nav .nav-link:hover {
+  background: rgba(255, 255, 255, 0.06);
+  color: #ffffff;
+}
+
+.sidebar-nav .nav-link.active {
+  background: var(--primary-color);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35);
+}
+
+.sidebar-footer {
+  padding: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+/* Cards & Widgets */
+.stat-card {
+  background: var(--bg-card);
+  border-radius: 1rem;
+  border: 1px solid var(--border-color);
+  padding: 1.5rem;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.stat-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.card-icon-box {
+  width: 48px;
+  height: 48px;
+  border-radius: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.35rem;
+}
+
+/* Progress & Meters */
+.risk-meter {
+  height: 12px;
+  border-radius: 6px;
+  background: #e2e8f0;
+  overflow: hidden;
+  position: relative;
+}
+
+.risk-meter-bar {
+  height: 100%;
+  border-radius: 6px;
+  transition: width 0.5s ease;
+}
+
+/* Badges */
+.badge-low {
+  background-color: #d1fae5;
+  color: #065f46;
+  font-weight: 600;
+}
+
+.badge-moderate {
+  background-color: #fef3c7;
+  color: #92400e;
+  font-weight: 600;
+}
+
+.badge-high {
+  background-color: #fee2e2;
+  color: #991b1b;
+  font-weight: 600;
+}
+
+.badge-severe {
+  background-color: #7f1d1d;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+/* Timer Display */
+.timer-display {
+  font-size: 3.5rem;
+  font-weight: 800;
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -1px;
+  color: #1e1b4b;
+}
+
+/* Pulse animation for active session */
+@keyframes pulse-ring {
+  0% { transform: scale(0.95); opacity: 0.8; }
+  50% { transform: scale(1.05); opacity: 1; }
+  100% { transform: scale(0.95); opacity: 0.8; }
+}
+
+.pulsing-badge {
+  animation: pulse-ring 2s infinite ease-in-out;
+}
+
+/* Auth Screens */
+.auth-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, #f8fafc 0%, #e0e7ff 100%);
+  padding: 1.5rem;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 460px;
+  background: #ffffff;
+  border-radius: 1.25rem;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+  padding: 2.5rem;
+}
+
+/* Form Styles */
+.form-control, .form-select {
+  border-radius: 0.5rem;
+  border: 1px solid #cbd5e1;
+  padding: 0.65rem 0.85rem;
+  font-size: 0.95rem;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+}
+
+.btn-primary {
+  background-color: var(--primary-color);
+  border-color: var(--primary-color);
+  font-weight: 600;
+  border-radius: 0.5rem;
+  padding: 0.6rem 1.25rem;
+  transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+  background-color: var(--primary-hover);
+  border-color: var(--primary-hover);
+}
+
+/* Responsive */
+@media (max-width: 992px) {
+  .sidebar {
+    width: 72px;
+  }
+  .sidebar-brand span, .sidebar-nav .nav-text, .sidebar-footer {
+    display: none;
+  }
+  .main-content {
+    margin-left: 72px;
+  }
+}
